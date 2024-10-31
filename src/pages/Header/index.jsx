@@ -1,16 +1,15 @@
-import React from 'react'
-import Navbar from '../../components/Navbar'
-import logo from '../../assets/favicon.png'
+import Navbar from "../../components/Navbar";
+import logo from "../../assets/favicon.png";
 import { FaShoppingCart } from "react-icons/fa";
-
 
 const Header = () => {
     const additionalLinks = [
-      { id: "cart", label: <FaShoppingCart/>, url: "/cart" },
-    ];
+     {id: "products", label: "Products", url: "/products"},
+    { id: "cart", label: <FaShoppingCart />, url: "/carts" },
+  ];
   return (
     <Navbar logo={logo} title="TrendHive" additionalLinks={additionalLinks} />
   );
-}
+};
 
-export default Header
+export default Header;

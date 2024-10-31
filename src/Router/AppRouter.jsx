@@ -11,7 +11,7 @@ const routes = [
   { path: "/", element: <Home /> },
   {path:"/products", element:<Products/>},
   { path: "/products/:slug", element: <Details /> },
-  { path: "/cart", element: <Cart /> },
+  { path: "/carts", element: <Cart /> },
 ];
 
 const AppRouter = () => (

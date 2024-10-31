@@ -1,5 +1,5 @@
 import { useState } from "react";
-import baseApi from "./baseApi";
+import baseApi from "../utils/api";
 
 const useUpdate = (endpoint, options = {}) => {
   const [data, setData] = useState(null);

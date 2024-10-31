@@ -1,5 +1,5 @@
 import { useState } from "react";
-import baseApi from "./baseApi";
+import baseApi from "../utils/api";
 
 const useDelete = (endpoint, options = {}) => {
   const [data, setData] = useState(null);

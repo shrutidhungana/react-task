@@ -2,14 +2,13 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-
 const Navbar = ({ title, logo, additionalLinks }) => {
-  const [isOpen] = useState(false); 
-
-  
+  const [isOpen] = useState(false);
 
   return (
-    <nav className="bg-[#5e5a5a] p-4">
+    <nav className="bg-[#5e5a5a] p-4 sticky top-0 z-10">
+      {" "}
+      {/* Added sticky and top-0 */}
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/">

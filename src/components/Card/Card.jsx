@@ -1,6 +1,8 @@
+import { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import SecondaryButton from "../Buttons/SecondaryButton";
+import Tooltip from "../Tooltip"; // Adjust path as necessary
 
 const Card = ({
   title,
@@ -14,8 +16,19 @@ const Card = ({
   onSecondaryButtonClick,
   secondaryButtonText,
 }) => {
+  const titleRef = useRef(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    if (titleRef.current) {
+      setIsOverflowing(
+        titleRef.current.scrollWidth > titleRef.current.clientWidth
+      );
+    }
+  }, [title]);
+
   return (
-    <div className="border border-gray-300 rounded-xl p-3 min-w-[300px] max-w-xs mx-auto my-4 text-left transition-transform transform hover:scale-105">
+    <div className="border border-gray-300 rounded-xl p-3 min-w-[300px] max-w-xs mx-2 my-4 text-left transition-transform duration-300">
       <div className="flex justify-center items-center h-48 overflow-hidden ProductCard-image">
         <img
           src={image}
@@ -25,9 +38,23 @@ const Card = ({
       </div>
       <div className="py-2">
         <p className="ProductCard-category text-green-600 font-bold">{brand}</p>
-        <h2 className="ProductCard-title text-lg font-bold text-[#000800] overflow-hidden whitespace-nowrap text-ellipsis w-[95%]">
-          {title}
-        </h2>
+        {isOverflowing ? (
+          <Tooltip text={title}>
+            <h2
+              ref={titleRef}
+              className="ProductCard-title text-lg font-bold text-[#000800] overflow-hidden whitespace-nowrap text-ellipsis w-[95%] cursor-pointer"
+            >
+              {title}
+            </h2>
+          </Tooltip>
+        ) : (
+          <h2
+            ref={titleRef}
+            className="ProductCard-title text-lg font-bold text-[#000800] overflow-hidden whitespace-nowrap text-ellipsis w-[95%]"
+          >
+            {title}
+          </h2>
+        )}
         <div className="flex justify-between items-center mb-2">
           <span className="ProductCard-price text-2xl text-orange-500">
             ${price}
@@ -63,10 +90,10 @@ Card.propTypes = {
   brand: PropTypes.string.isRequired,
   ratings: PropTypes.number.isRequired,
   totalRatings: PropTypes.number.isRequired,
-  onPrimaryButtonClick: PropTypes.func, 
-  primaryButtonText: PropTypes.string, 
-  onSecondaryButtonClick: PropTypes.func, 
-  secondaryButtonText: PropTypes.string, 
+  onPrimaryButtonClick: PropTypes.func,
+  primaryButtonText: PropTypes.string,
+  onSecondaryButtonClick: PropTypes.func,
+  secondaryButtonText: PropTypes.string,
 };
 
 export default Card;
