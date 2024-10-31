@@ -3,12 +3,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ title, logo, additionalLinks }) => {
-  const [isOpen] = useState(false);
+ 
 
   return (
     <nav className="bg-[#5e5a5a] p-4 sticky top-0 z-10">
-      {" "}
-      {/* Added sticky and top-0 */}
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/">
@@ -22,14 +20,12 @@ const Navbar = ({ title, logo, additionalLinks }) => {
 
         {/* Links */}
         <ul
-          className={`${
-            isOpen ? "block" : "hidden"
-          } md:flex md:justify-between items-center list-none absolute md:static left-0 w-full bg-[#5e5a5a] md:bg-transparent md:w-auto transition-all duration-300`}
+          className={`md:flex md:justify-between items-center list-none md:static left-0 w-full bg-[#5e5a5a] md:bg-transparent md:w-auto transition-all duration-300 overflow-x-auto whitespace-nowrap`}
         >
           {additionalLinks?.map((link) => (
             <li
               key={link.label}
-              className="text-white text-lg px-4 py-2 md:flex md:items-center"
+              className="text-white text-lg px-4 py-2 md:flex md:items-center inline-block"
             >
               <Link
                 to={link.url}
