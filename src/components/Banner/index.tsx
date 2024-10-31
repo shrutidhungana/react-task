@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
-const Banner = ({ imageUrl, slogan, message, buttonLabel, buttonLink }) => {
+const Banner = ({ imageUrl, slogan, message, buttonLabel, buttonLink, extraMessage }) => {
   return (
     <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden bg-gray-100">
       <img
@@ -44,6 +44,16 @@ const Banner = ({ imageUrl, slogan, message, buttonLabel, buttonLink }) => {
             </motion.button>
           </Link>
         )}
+        <div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+            className="text-lg sm:text-xl max-w-2xl text-red-500"
+          >
+            {extraMessage}
+          </motion.p>
+        </div>
       </div>
     </div>
   );
@@ -54,7 +64,8 @@ Banner.propTypes = {
   slogan: PropTypes.string.isRequired,
   message: PropTypes.string,
   buttonLabel: PropTypes.string,
-  buttonLink: PropTypes.string.isRequired, // Add buttonLink prop
+    buttonLink: PropTypes.string,
+  extraMessage: PropTypes.string,
 };
 
 

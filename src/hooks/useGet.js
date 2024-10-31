@@ -10,16 +10,20 @@ const useGet = (endpoint, options = {}) => {
     let isMounted = true;
     setLoading(true);
 
+    console.log(`Fetching data from: ${endpoint}`);
+
     baseApi
       .get(endpoint, options)
       .then((response) => {
         if (isMounted) {
+          console.log("Response received:", response.data);
           setData(response.data);
           setError(null);
         }
       })
       .catch((error) => {
         if (isMounted) {
+          console.error("Error fetching data:", error);
           setError(error);
         }
       })
@@ -32,7 +36,7 @@ const useGet = (endpoint, options = {}) => {
     return () => {
       isMounted = false;
     };
-  }, [endpoint, options]);
+  }, [endpoint]); 
 
   return { data, loading, error };
 };
