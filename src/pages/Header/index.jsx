@@ -6,7 +6,6 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
     const additionalLinks = [
-      { id: "product", label: "Product", url: "/product" },
       { id: "cart", label: <FaShoppingCart/>, url: "/cart" },
     ];
   return (

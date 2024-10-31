@@ -1,15 +1,16 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../pages/Header";
-import Home from "../pages/Home";
-import Product from "../pages/Product";
+
+import Products from "../pages/Product";
 import Cart from "../pages/Cart";
 import Details from "../pages/ProductDetails";
+import Home from "../pages/Home";
 
 const routes = [
   { path: "/", element: <Home /> },
-  { path: "/product", element: <Product /> },
-  { path: "/product/:slug", element: <Details /> },
+  {path:"/products", element:<Products/>},
+  { path: "/products/:slug", element: <Details /> },
   { path: "/cart", element: <Cart /> },
 ];
 
